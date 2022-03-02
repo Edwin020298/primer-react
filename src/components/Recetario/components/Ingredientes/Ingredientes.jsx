@@ -2,9 +2,11 @@ import React, { memo } from 'react';
 
 const Ingredientes = memo(() => {
     return (
-        <div>
-            
-        </div>
+        <ol>
+      {receta.Ingredientes.map((ingredientes, i) => (
+        <li key={i}>{ingredientes}</li>
+      ))}
+    </ol>
     );
 });
 

@@ -1,14 +1,20 @@
 import React, { memo, useState, useEffect } from "react";
 import "./Recetario.css";
 import RecetaT from "./components/RecetaT/RecetaT";
+import CaloriasT from "./components/CaloriasT/CaloriasT";
+import NombreT from "./components/NombreT/NombreT";
+import Ingredientes from "./components/Ingredientes/Ingredientes";
+
 const initialState = {
   nombre: "",
   ingredientes: [""],
   calorias: "",
+  receta: "",
 };
 const Recetario = memo(() => {
   const [receta, setReceta] = useState(initialState);
   const [nombreReceta, setNombreReceta] = useState(receta.receta);
+  const [nombreCalorias, setNombreCalorias] = useState(receta.Calorias);
 
   useEffect(() => {
     console.log("antes de renderizar");
@@ -33,18 +39,6 @@ const Recetario = memo(() => {
     };
   }, []);
 
-  
-  const caloriasT = <h2>{`Calorias: ${receta.calorias}`}</h2>;
-  const NombreT = <h3>{`Nombre: ${receta.ingredientes}`}</h3>;
-
-  const ingredientes = (
-    <ol>
-      {receta.ingredientes.map((ingredientes, i) => (
-        <li key={i}>{ingredientes}</li>
-      ))}
-    </ol>
-  );
-
   const onSubmit = (e) => {
     e.preventDefault();
     let data = { ...receta };
@@ -63,9 +57,9 @@ const Recetario = memo(() => {
       </form>
 
       <RecetaT nombreReceta={receta.nombre} />
-      {caloriasT}
-      {NombreT}
-      {ingredientes}
+      <CaloriasT nombreCalorias={CaloriasT.nombre} />
+      <NombreT nombreNombre={NombreT.nombre} />
+      <Ingredientes nombreIngredientes={Ingredientes.nombre} />
       <hr />
     </div>
   );
