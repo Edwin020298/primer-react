@@ -4,6 +4,7 @@ import RecetaT from "./components/RecetaT/RecetaT";
 import CaloriasT from "./components/CaloriasT/CaloriasT";
 import NombreT from "./components/NombreT/NombreT";
 import Ingredientes from "./components/Ingredientes/Ingredientes";
+import Formulario from "./components/Formulario/Formulario";
 
 const initialState = {
   nombre: "",
@@ -28,7 +29,6 @@ const Recetario = memo(() => {
 
   useEffect(() => {
     if (receta.nombre !== "") {
-      console.log("despues de obtener receta");
       setNombreReceta(receta.nombre);
     }
   }, [receta]);
@@ -39,23 +39,16 @@ const Recetario = memo(() => {
     };
   }, []);
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    let data = { ...receta };
-    data.nombre = nombreReceta;
-    setReceta(data);
-  };
 
   return (
     <div className="mi-componente">
-      <form onSubmit={onSubmit}>
-        <input
-          value={nombreReceta}
-          onChange={(event) => setNombreReceta(event.target.value)}
-        />
-        <button type="submit">Cambiar Receta</button>
-      </form>
 
+ <Formulario
+ receta={receta}
+ setReceta={setReceta}
+ nombreReceta={nombreReceta}
+ setNombreReceta={setNombreReceta}
+ />
       <RecetaT nombreReceta={receta.nombre} />
       <CaloriasT Calorias={receta.calorias} />
       <Ingredientes ingredientes={receta.ingredientes} />
