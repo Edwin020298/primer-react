@@ -1,10 +1,10 @@
 import React, { memo } from 'react';
 
-const Ingredientes = memo(() => {
+const Ingredientes = memo(({ingredientes}) => {
     return (
         <ol>
-      {receta.Ingredientes.map((ingredientes, i) => (
-        <li key={i}>{ingredientes}</li>
+      {ingredientes.map((ingrediente, i) => (
+        <li key={i}>{ingrediente}</li>
       ))}
     </ol>
     );

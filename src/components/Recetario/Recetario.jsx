@@ -57,9 +57,8 @@ const Recetario = memo(() => {
       </form>
 
       <RecetaT nombreReceta={receta.nombre} />
-      <CaloriasT nombreCalorias={CaloriasT.nombre} />
-      <NombreT nombreNombre={NombreT.nombre} />
-      <Ingredientes nombreIngredientes={Ingredientes.nombre} />
+      <CaloriasT Calorias={receta.calorias} />
+      <Ingredientes ingredientes={receta.ingredientes} />
       <hr />
     </div>
   );
