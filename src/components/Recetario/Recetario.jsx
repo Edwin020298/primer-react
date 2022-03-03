@@ -2,10 +2,9 @@ import React, { memo, useState, useEffect } from "react";
 import "./Recetario.css";
 import RecetaT from "./components/RecetaT/RecetaT";
 import CaloriasT from "./components/CaloriasT/CaloriasT";
-import NombreT from "./components/NombreT/NombreT";
 import Ingredientes from "./components/Ingredientes/Ingredientes";
 import Formulario from "./components/Formulario/Formulario";
-
+import Input from '../Input/Input'
 const initialState = {
   nombre: "",
   ingredientes: [""],
@@ -15,7 +14,6 @@ const initialState = {
 const Recetario = memo(() => {
   const [receta, setReceta] = useState(initialState);
   const [nombreReceta, setNombreReceta] = useState(receta.receta);
-  const [nombreCalorias, setNombreCalorias] = useState(receta.Calorias);
 
   useEffect(() => {
     console.log("antes de renderizar");
@@ -39,16 +37,20 @@ const Recetario = memo(() => {
     };
   }, []);
 
-
   return (
     <div className="mi-componente">
-
- <Formulario
- receta={receta}
- setReceta={setReceta}
- nombreReceta={nombreReceta}
- setNombreReceta={setNombreReceta}
- />
+      <Formulario
+        receta={receta}
+        setReceta={setReceta}
+        nombreReceta={nombreReceta}
+        setNombreReceta={setNombreReceta}
+      />
+        <Input
+          id="nombre_receta"
+          name="nombre_receta"
+          type="text"
+        />
+        
       <RecetaT nombreReceta={receta.nombre} />
       <CaloriasT Calorias={receta.calorias} />
       <Ingredientes ingredientes={receta.ingredientes} />
